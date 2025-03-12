@@ -1,4 +1,5 @@
 import random
+import time
 
 cards = [1,2,3,4,5,6,7,8,9,10,10,10,10]
 house = [10,10,9,9,8,7,2,3]
@@ -58,7 +59,9 @@ def blackjack():
                     money = money + bet
                     print("Opponent had: " + str(y))
                     break
+        time.sleep(3)
         print("You have: " + str(money) + " Dollars.")
+        time.sleep(2)
         question = input("Do you want to play again? ")
         if question == "no":
             break
@@ -67,6 +70,7 @@ def blackjack():
             y = opponent()
             cash = 1
         else:
+            time.sleep(5)
             print("I'm gonna guess that's a yes.")
             x = hand()
             y = opponent()
