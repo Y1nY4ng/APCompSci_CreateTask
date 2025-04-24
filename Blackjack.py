@@ -1,23 +1,24 @@
 import random
 import time
 
-cards = [1,2,3,4,5,6,7,8,9,10,10,10,10]
+cards = [1,2,3,4,5,6,7,8,9,10,10,10,10,11]
 house = [10,10,9,9,8,7,2,3]
+cheats = [10,10,11,9]
 cash = 1
 
 def hand(): 
     you = random.choice(cards) + random.choice(cards)
     return you
 
-def opponent():
-    opponent = 10 + random.choice(house)
+def opponent(hand):
+    opponent = 10 + random.choice(hand)
     return opponent
 
-def blackjack():
-    money = 3000
+def blackjack(rich):
+    money = rich
     cash = 1
     x = hand()
-    y = opponent()
+    y = opponent(house)
     print("You have: " + str(money) + " Dollars.")
     while True:
         while True:
@@ -28,6 +29,9 @@ def blackjack():
                 elif bet == money:
                     print("That's a bad idea.")
                 else:
+                    if bet >= 10000:
+                        y = opponent(cheats)
+                        print(y)
                     cash = 0
             if x > 21:
                 print("sorry, you went over 21!")
@@ -39,9 +43,9 @@ def blackjack():
                 money = money + bet
                 print("Opponent had: " + str(y))
                 break
-            elif y > 21:
-                print("Your opponent went over 21.")
-                money = money + bet
+            elif y == 21:
+                print("Your opponent got 21.")
+                money = money - bet
                 break
             print("your hand is: " + str(x))
             ask = input("Hit or Fold? ")
@@ -67,13 +71,13 @@ def blackjack():
             break
         elif question == "yes":
             x = hand()
-            y = opponent()
+            y = opponent(house)
             cash = 1
         else:
-            time.sleep(5)
+            time.sleep(2.5)
             print("I'm gonna guess that's a yes.")
             x = hand()
-            y = opponent()
+            y = opponent(house)
             cash = 1
-
-blackjack()
+starting_money  = random.randint(3,10) * 1000
+blackjack(starting_money)
