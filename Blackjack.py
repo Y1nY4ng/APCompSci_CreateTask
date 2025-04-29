@@ -62,6 +62,11 @@ def blackjack(rich):
                     money = money + bet
                     print("Opponent had: " + str(y))
                     break
+                elif y == x
+                    print("You tied? I guess house wins!")
+                    money = money - bet
+                    print("Opponent had: " + str(y))
+                    break
         time.sleep(3)
         print("You have: " + str(money) + " Dollars.")
         time.sleep(2)
