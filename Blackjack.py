@@ -31,7 +31,6 @@ def blackjack(rich):
                 else:
                     if bet >= 10000:
                         y = opponent(cheats)
-                        print(y)
                     cash = 0
             if x > 21:
                 print("sorry, you went over 21!")
